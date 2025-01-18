@@ -14,6 +14,8 @@ export default function Intro() {
     const linkedIn = "https://www.linkedin.com/in/hazel-wang-351213335/";
 
     const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
+    const cv_download_url =
+        "https://tjz9bs3cabrcz1j2.public.blob.vercel-storage.com/portfolio/Hazel%20Wang_Full-stack-uIEAFrwZiKK4panDsatxp9uUvaeJ6t.pdf";
 
     return (
         <section
@@ -80,15 +82,20 @@ export default function Intro() {
                     }}
                 >
                     Contack me here
-                    <BsArrowRight className="opacity-70 transition group-hover:translate-x-1" />
+                    <div className="opacity-70 transition group-hover:translate-x-1">
+                        <BsArrowRight />
+                    </div>
                 </Link>
                 <a
                     className="borderBlack group flex cursor-pointer items-center gap-2 rounded-full bg-white px-7 py-3 outline-none transition hover:scale-110 focus:scale-110 active:scale-105 dark:bg-white/10"
-                    href="/Hazel_Wang_Full-stack.pdf"
+                    href={cv_download_url}
                     download
                 >
                     Download CV{" "}
-                    <HiDownload className="opacity-60 transition group-hover:translate-y-1" />
+                    <div className="opacity-90 transition group-hover:translate-y-1">
+                        {" "}
+                        <HiDownload />
+                    </div>
                 </a>
                 <a
                     className="borderBlack flex items-center gap-2 rounded-full border bg-white p-4 text-gray-700 outline-none transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] active:scale-[1.15]"
