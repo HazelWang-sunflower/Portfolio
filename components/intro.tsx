@@ -5,17 +5,38 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRight, BsLinkedin } from "react-icons/bs";
-import { FaGithubSquare } from "react-icons/fa";
+import { FaGithubSquare, FaTruckLoading } from "react-icons/fa";
 import { HiDownload } from "react-icons/hi";
+import { useToast } from "@/hooks/use-toast";
+import { saveAs } from "file-saver";
+import { useState } from "react";
 
 export default function Intro() {
     const { ref } = useSectionInView("Home", 0.2);
+    const { toast } = useToast();
+    const [isLoading, setIsLoading] = useState(false);
 
     const linkedIn = "https://www.linkedin.com/in/hazel-wang-351213335/";
 
     const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
-    const cv_download_url =
-        "https://tjz9bs3cabrcz1j2.public.blob.vercel-storage.com/portfolio/Hazel%20Wang_Full-stack-uIEAFrwZiKK4panDsatxp9uUvaeJ6t.pdf";
+    const downloadCV = async () => {
+        setIsLoading(true);
+        try {
+            const response = await fetch("/api/download");
+            if (!response.ok) {
+                throw new Error("Failed to download PDF");
+            }
+            const blob = await response.blob();
+            saveAs(blob, "Hazel_Wang_Full-stack.pdf");
+        } catch (error) {
+            toast({
+                title: "Something went wrong.",
+                description: "Failed to download PDF. Please try again.",
+            });
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     return (
         <section
@@ -86,17 +107,22 @@ export default function Intro() {
                         <BsArrowRight />
                     </div>
                 </Link>
-                <a
+                <button
                     className="borderBlack group flex cursor-pointer items-center gap-2 rounded-full bg-white px-7 py-3 outline-none transition hover:scale-110 focus:scale-110 active:scale-105 dark:bg-white/10"
-                    href={cv_download_url}
-                    download
+                    onClick={downloadCV}
                 >
-                    Download CV{" "}
-                    <div className="opacity-90 transition group-hover:translate-y-1">
-                        {" "}
-                        <HiDownload />
-                    </div>
-                </a>
+                    {isLoading ? (
+                        "Downloading..."
+                    ) : (
+                        <>
+                            Download CV{" "}
+                            <div className="opacity-90 transition group-hover:translate-y-1">
+                                {" "}
+                                <HiDownload />
+                            </div>
+                        </>
+                    )}
+                </button>
                 <a
                     className="borderBlack flex items-center gap-2 rounded-full border bg-white p-4 text-gray-700 outline-none transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] active:scale-[1.15]"
                     href={linkedIn}

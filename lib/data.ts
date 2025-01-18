@@ -2,9 +2,10 @@ import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
 import { FaAngular, FaJava, FaReact, FaVuejs } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
-import corpcommentImg from "@/public/corpcomment.png";
-import rmtdevImg from "@/public/rmtdev.png";
-import wordanalyticsImg from "@/public/wordanalytics.png";
+import enterpriselevelImg from "@/public/Enterprise-level_employee_platform.png";
+import flatTaskImg from "@/public/Flat_task_management_platform.png";
+import aiStarImg from "@/public/AI_Star.png";
+import saasImg from "@/public/Saas_Platform.jpg";
 
 export const links = [
     {
@@ -112,7 +113,7 @@ export const projectsData = [
             "Neon",
             "Vercel",
         ],
-        imageUrl: corpcommentImg,
+        imageUrl: enterpriselevelImg,
     },
     {
         title: "Enterprise-level employee platform",
@@ -127,28 +128,28 @@ export const projectsData = [
             "Cypress",
             "Oracle",
         ],
-        imageUrl: corpcommentImg,
+        imageUrl: enterpriselevelImg,
     },
     {
         title: "Flat task management platform",
         description:
             "I shares Angular technical with the team, undertakes the main development in this project. Taking the initiative to research SpringBoot and lead the team in Java code development.",
         tags: ["Angular", "Java", "Spring Boot", "Graphql"],
-        imageUrl: rmtdevImg,
+        imageUrl: flatTaskImg,
     },
     {
         title: "AI  Start  Platform",
         description:
             "The project is the output of the company's creative activities. It uses the company's internal github, confluence document data, etc. as data sources. The data is fed to the AI ​​large model for analysis and summary, and the technical expertise and project experience of the company's employees are generated.",
         tags: ["Vuejs", "Nestjs", "ML", "Figma", "Oracle"],
-        imageUrl: wordanalyticsImg,
+        imageUrl: aiStarImg,
     },
     {
         title: "SaaS Management Platform",
         description:
             "This project is a front-end and back-end separation architecture. The front-end and back-end communication uses the jQuery ajax that has been packaged in the project. The front-end framework used is KeenUI. The project uses vue to encapsulate business components, uses the koa framework, and nginx forwarding to ensure that even if the interface is not completed, it can be tested and developed normally.",
         tags: ["Vuejs", "Java", "Spring Boot", "Axios", "KeenUI"],
-        imageUrl: wordanalyticsImg,
+        imageUrl: saasImg,
     },
 ] as const;
 

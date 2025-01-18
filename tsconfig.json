@@ -15,6 +15,7 @@
         "jsx": "preserve",
         "incremental": true,
         "allowSyntheticDefaultImports": true,
+        "types": ["file-saver"],
         "plugins": [
             {
                 "name": "next"
