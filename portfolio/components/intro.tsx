@@ -1,4 +1,5 @@
 "use client";
+import { useActiveSectionContext } from "@/context/active-setion-context";
 import { useSectionInView } from "@/hooks/useSectionInView.hook";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -8,9 +9,12 @@ import { FaGithubSquare } from "react-icons/fa";
 import { HiDownload } from "react-icons/hi";
 
 export default function Intro() {
-    const { ref } = useSectionInView("About", 0.5);
+    const { ref } = useSectionInView("Home", 0.2);
 
     const linkedIn = "https://www.linkedin.com/in/hazel-wang-351213335/";
+
+    const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
+
     return (
         <section
             ref={ref}
@@ -70,12 +74,16 @@ export default function Intro() {
                 <Link
                     className="group flex items-center gap-2 rounded-full bg-gray-900 px-7 py-3 text-white outline-none transition hover:scale-110 hover:bg-gray-950 focus:scale-110 active:scale-105"
                     href="#contact"
+                    onClick={() => {
+                        setActiveSection("Contact");
+                        setTimeOfLastClick(Date.now());
+                    }}
                 >
                     Contack me here
                     <BsArrowRight className="opacity-70 transition group-hover:translate-x-1" />
                 </Link>
                 <a
-                    className="group flex cursor-pointer items-center gap-2 rounded-full border border-black/10 bg-white px-7 py-3 outline-none transition hover:scale-110 focus:scale-110 active:scale-105"
+                    className="borderBlack group flex cursor-pointer items-center gap-2 rounded-full bg-white px-7 py-3 outline-none transition hover:scale-110 focus:scale-110 active:scale-105 dark:bg-white/10"
                     href="/Hazel_Wang_Full-stack.pdf"
                     download
                 >
@@ -83,13 +91,13 @@ export default function Intro() {
                     <HiDownload className="opacity-60 transition group-hover:translate-y-1" />
                 </a>
                 <a
-                    className="flex items-center gap-2 rounded-full border border-black/10 bg-white p-4 text-gray-700 outline-none transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] active:scale-[1.15]"
+                    className="borderBlack flex items-center gap-2 rounded-full border bg-white p-4 text-gray-700 outline-none transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] active:scale-[1.15]"
                     href={linkedIn}
                     target="_blank"
                 >
                     <BsLinkedin />
                 </a>
-                <a className="flex items-center gap-2 rounded-full border border-black/10 bg-white p-4 text-[1.35rem] text-gray-700 outline-none transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] active:scale-[1.15]">
+                <a className="borderBlack flex items-center gap-2 rounded-full border bg-white p-4 text-[1.35rem] text-gray-700 outline-none transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] active:scale-[1.15]">
                     <FaGithubSquare />
                 </a>
             </motion.div>
