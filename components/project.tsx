@@ -11,7 +11,7 @@ export default function Project({
     tags,
     imageUrl,
 }: ProjectProps) {
-    const ref = useRef<HTMLElement>(null);
+    const ref = useRef<HTMLDivElement | null>(null);
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["0 1", "1.33 1"],
@@ -27,7 +27,7 @@ export default function Project({
             }}
             className="group mb-3 last:mb-0 sm:mb-8"
         >
-            <section className="tranistion relative max-w-[50rem] overflow-hidden border border-black/5 bg-gray-100 last:mb-0 hover:bg-gray-200 sm:mb-8 sm:h-[30rem] sm:pr-8 sm:even:pl-8 dark:bg-white/10 dark:text-white dark:hover:bg-white/20">
+            <section className="tranistion relative max-w-[50rem] overflow-hidden border border-black/5 bg-gray-100 last:mb-0 hover:bg-gray-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 sm:mb-8 sm:h-[30rem] sm:pr-8 sm:even:pl-8">
                 <div className="flex h-full flex-col px-5 pb-7 pt-4 sm:max-w-[50%] sm:pl-10 sm:pr-2 sm:pt-10 sm:group-even:ml-[26rem]">
                     <h3 className="text-2xl font-semibold">{title}</h3>
                     <p className="mt-2 leading-relaxed text-gray-700 dark:text-white/70">
